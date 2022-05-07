@@ -4,9 +4,9 @@ cd /usr/share/nginx/html
 
 rm -v !("Dockerfile"|".dockerignore"|"update.sh")
 
-apt update -y
-apt install unzip -y
-apt install curl -y
+apt-get update -y
+apt-get install unzip -y
+apt-get install curl -y
 
 curl -L -O https://github.com/LAX1DUDE/eaglercraft/raw/main/stable-download/stable-download-new.zip
 unzip stable-download-new.zip
