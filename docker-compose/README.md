@@ -15,3 +15,5 @@ If you are using nginx proxy manager, here are some screenshots of my proxy host
 ![Screenshot](Screenshot_74.png)
 
 ![Screenshot](Screenshot_75.png)
+
+*we dont talk about screenshot_73*
