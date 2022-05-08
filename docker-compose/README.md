@@ -8,10 +8,10 @@ I recommend using nginx proxy manager, but if you decide against it you will nee
 
 If you are using nginx proxy manager, here are some screenshots of my proxy host:
 
-https://prnt.sc/rzATukJ8Smtw
+![Screenshot](Screenshot_71.png)
 
-https://prnt.sc/eKKcKHc4zYQd
+![Screenshot](Screenshot_72.png)
 
-https://prnt.sc/F_AiuF0feKqf
+![Screenshot](Screenshot_74.png)
 
-https://prnt.sc/oAKYWXNjgrd1
+![Screenshot](Screenshot_75.png)
