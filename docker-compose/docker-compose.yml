@@ -12,6 +12,8 @@ services:
     restart: unless-stopped
     stdin_open: true
     tty: true
+    volumes:
+      - emcbungeecorddata:/data
     networks:
       - nginx_default
       - eaglercraft
@@ -43,5 +45,6 @@ networks:
   eaglercraft:
     external: false
 volumes:
+  emcbungeecorddata:
   emclobbydata:
   emcsurvivaldata:
