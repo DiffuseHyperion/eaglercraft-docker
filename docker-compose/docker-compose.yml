@@ -13,7 +13,7 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - emcbungeecorddata:/data
+      - bungeecord-data:/data
     networks:
       - nginx_default
       - eaglercraft
@@ -25,7 +25,7 @@ services:
     ports:
       - 25566:25565
     volumes:
-      - emclobbydata:/data
+      - lobby-data:/data
     networks:
       - eaglercraft
   survival:
@@ -36,7 +36,7 @@ services:
     ports:
       - 25567:25565
     volumes:
-      - emcsurvivaldata:/data
+      - survival-data:/data
     networks:
       - eaglercraft
 networks:
@@ -45,6 +45,6 @@ networks:
   eaglercraft:
     external: false
 volumes:
-  emcbungeecorddata:
-  emclobbydata:
-  emcsurvivaldata:
+  bungeecord-data:
+  lobby-data:
+  survival-data:
