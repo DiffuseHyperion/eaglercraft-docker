@@ -1,14 +1,14 @@
 version: '3'
 services:
   website:
-    image: 'diffusehyperion/eaglercraft-website:latest'
+    image: 'diffusehyperion/eaglercraft-website:latest-secure'
     restart: unless-stopped
     stdin_open: true
     tty: true
     networks:
       - nginx_default
   bungeecord:
-    image: 'diffusehyperion/eaglercraft-bungee:latest'
+    image: 'diffusehyperion/eaglercraft-bungee:latest-secure'
     restart: unless-stopped
     stdin_open: true
     tty: true
@@ -18,7 +18,7 @@ services:
       - nginx_default
       - bungeecord-network
   lobby:
-    image: 'diffusehyperion/eaglercraft-bukkit:latest'
+    image: 'diffusehyperion/eaglercraft-bukkit:latest-secure'
     restart: unless-stopped
     stdin_open: true
     tty: true
@@ -29,7 +29,7 @@ services:
     networks:
       - bungeecord-network
   survival:
-    image: 'diffusehyperion/eaglercraft-bukkit:latest'
+    image: 'diffusehyperion/eaglercraft-bukkit:latest-secure'
     restart: unless-stopped
     stdin_open: true
     tty: true
