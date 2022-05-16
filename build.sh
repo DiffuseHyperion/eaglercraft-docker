@@ -52,7 +52,7 @@ fi
 echo "Finished building images!"
 if [ "$push" == "Y" ]; then
 echo "Pushing images."
-cmd ~/eaglercraft-docker/password.txt | docker login --username diffusehyperion --password-stdin
+cat ~/eaglercraft-docker/password.txt | docker login --username diffusehyperion --password-stdin
 if [ "$secure" == "Y" ]; then
 docker push diffusehyperion/eaglercraft-bungee:$tag-secure
 docker push diffusehyperion/eaglercraft-bukkit:$tag-secure
