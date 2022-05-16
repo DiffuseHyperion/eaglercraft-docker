@@ -17,6 +17,8 @@ services:
     networks:
       - nginx_default
       - bungeecord-network
+    environment:
+      - ONLINE=false
   lobby:
     image: 'diffusehyperion/eaglercraft-bukkit:latest-secure'
     restart: unless-stopped
@@ -28,6 +30,8 @@ services:
       - lobby-data:/data
     networks:
       - bungeecord-network
+    environment:
+      - ONLINE=false
   survival:
     image: 'diffusehyperion/eaglercraft-bukkit:latest-secure'
     restart: unless-stopped
@@ -39,6 +43,8 @@ services:
       - survival-data:/data
     networks:
       - bungeecord-network
+    environment:
+      - ONLINE=false
 networks:
   nginx_default:
     external: true
