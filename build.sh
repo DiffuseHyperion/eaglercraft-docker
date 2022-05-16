@@ -1,17 +1,17 @@
 echo "What should be the base tag name for all of the images? [latest]"
-read tag
+read -r tag
 tag="${tag:=latest}"
 echo "Build SECURE images? Y/n"
-read secure
+read -r secure
 secure="${secure:=Y}"
 echo "Build UNSECURE images? Y/n"
-read unsecure
+read -r unsecure
 unsecure="${unsecure:=Y}"
 echo "Remove old images? Y/n"
-read old
+read -r old
 old="${old:=Y}"
 echo "Push images? Y/n"
-read push
+read -r push
 push="${push:=Y}"
 echo "Tag: $tag"
 echo "Secure: $secure"
@@ -23,33 +23,36 @@ docker image remove diffusehyperion/eaglercraft-bukkit:$tag-secure
 docker image remove diffusehyperion/eaglercraft-bungee:$tag-secure
 echo "Removed secure images."
 fi
-cd ~/eaglercraft-docker/bungee-secure
+cd ~/eaglercraft-docker/bungee-secure || exit
 docker build -t diffusehyperion/eaglercraft-bungee:$tag-secure .
-cd ~/eaglercraft-docker/bukkit-secure
+cd ~/eaglercraft-docker/bukkit-secure || exit
 docker build -t diffusehyperion/eaglercraft-bukkit:$tag-secure .
-cd ~/eaglercraft-docker/website-secure
+cd ~/eaglercraft-docker/website-secure || exit
 docker build -t diffusehyperion/eaglercraft-website:$tag-secure .
 echo "Built new secure images."
 fi
 if [ "$unsecure" == "Y" ]; then
 if [ "$old" == "Y" ]; then
 echo "Removed unsecure images."
+fi
+if [ "$unsecure" == "Y" ]; then
+if [ "$old" == "Y" ]; then
 docker image remove diffusehyperion/eaglercraft-bungee:$tag-unsecure
 docker image remove diffusehyperion/eaglercraft-bukkit:$tag-unsecure
 docker image remove diffusehyperion/eaglercraft-bungee:$tag-unsecure
 fi
-cd ~/eaglercraft-docker/bungee-unsecure
+cd ~/eaglercraft-docker/bungee-unsecure || exit
 docker build -t diffusehyperion/eaglercraft-bungee:$tag-unsecure .
-cd ~/eaglercraft-docker/bukkit-unsecure
+cd ~/eaglercraft-docker/bukkit-unsecure || exit
 docker build -t diffusehyperion/eaglercraft-bukkit:$tag-unsecure .
-cd ~/eaglercraft-docker/website-unsecure
+cd ~/eaglercraft-docker/website-unsecure || exit
 docker build -t diffusehyperion/eaglercraft-website:$tag-unsecure .
 echo "Built new unsecure images."
 fi
 echo "Finished building images!"
 if [ "$push" == "Y" ]; then
 echo "Pushing images."
-cat ~/eaglercraft-docker/password.txt | docker login --username diffusehyperion --password-stdin
+cmd ~/eaglercraft-docker/password.txt | docker login --username diffusehyperion --password-stdin
 if [ "$secure" == "Y" ]; then
 docker push diffusehyperion/eaglercraft-bungee:$tag-secure
 docker push diffusehyperion/eaglercraft-bukkit:$tag-secure
@@ -65,3 +68,5 @@ fi
 echo "Finished pushing images."
 fi
 echo "Script finished!"
+fi
+echo "Done!"
