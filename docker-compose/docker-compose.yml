@@ -16,7 +16,7 @@ services:
       - bungeecord-data:/data
     networks:
       - nginx_default
-      - eaglercraft
+      - bungeecord-network
   lobby:
     image: 'diffusehyperion/eaglercraft-bukkit:latest'
     restart: unless-stopped
@@ -27,7 +27,7 @@ services:
     volumes:
       - lobby-data:/data
     networks:
-      - eaglercraft
+      - bungeecord-network
   survival:
     image: 'diffusehyperion/eaglercraft-bukkit:latest'
     restart: unless-stopped
@@ -38,11 +38,11 @@ services:
     volumes:
       - survival-data:/data
     networks:
-      - eaglercraft
+      - bungeecord-network
 networks:
   nginx_default:
     external: true
-  eaglercraft:
+  bungeecord-network:
     external: false
 volumes:
   bungeecord-data:
