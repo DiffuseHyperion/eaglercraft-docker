@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ "$3" != "true" ]; then
+echo "Online mode was set to false!"
+echo "If you do not understand what you're doing, stop the container and remove the env variable."
+fi
 cd /data
 apt-get update -y
 apt-get install openjdk-8-jre-headless -y
@@ -25,6 +29,12 @@ then
     echo "eula=true" > /data/eula.txt
     echo "EULA has been set to true! Please read https://account.mojang.com/documents/minecraft_eula."
 fi
-
+if [ "$3" != "true" ]; then
+if [ ! -f /data/server.properties ]; then
+echo "online-mode=false" > /data/server.properties
+else
+sed -i 's/online-mode=true/online-mode=true/g' /data/server.properties
+fi
+fi
 echo Running server with $1-$2 RAM!
 java -Xms$1 -Xmx$2 -jar craftbukkit-1.5.2-R1.0.jar
