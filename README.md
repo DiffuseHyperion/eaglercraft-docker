@@ -9,9 +9,6 @@ Check out:
 > 
 > [diffusehyperion/eaglercraft-website](https://hub.docker.com/r/diffusehyperion/eaglercraft-website)
 
-You can also pull the images from github!
-> [Packages](https://github.com/DiffuseHyperion?tab=packages&repo_name=eaglercraft-docker)
-
 Eaglercraft is from https://github.com/LAX1DUDE/eaglercraft, check it out!
 
 Each image are in seperate folders, i think u can figure out which is which lol
