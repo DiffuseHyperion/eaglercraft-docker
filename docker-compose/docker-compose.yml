@@ -1,0 +1,50 @@
+version: '3'
+services:
+  website:
+    image: 'diffusehyperion/eaglercraft-website:latest'
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    networks:
+      - nginx_default
+  bungeecord:
+    image: 'diffusehyperion/eaglercraft-bungee:latest'
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    volumes:
+      - bungeecord-data:/data
+    networks:
+      - nginx_default
+      - eaglercraft
+  lobby:
+    image: 'diffusehyperion/eaglercraft-bukkit:latest'
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports:
+      - 25566:25565
+    volumes:
+      - lobby-data:/data
+    networks:
+      - eaglercraft
+  survival:
+    image: 'diffusehyperion/eaglercraft-bukkit:latest'
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports:
+      - 25567:25565
+    volumes:
+      - survival-data:/data
+    networks:
+      - eaglercraft
+networks:
+  nginx_default:
+    external: true
+  eaglercraft:
+    external: false
+volumes:
+  bungeecord-data:
+  lobby-data:
+  survival-data:
