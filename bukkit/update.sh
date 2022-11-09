@@ -28,6 +28,7 @@ if [ ! -f /server/server.properties ]; then
 echo "online-mode=false" > /server/server.properties
 else
 sed -i 's/online-mode=true/online-mode=false/g' /server/server.properties
+sed -i 's/server-port=25565/server-port=25569/g' /server/server.properties
 fi
 
 fi
